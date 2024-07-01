@@ -15,10 +15,10 @@ generator js {
     provider = 'prisma-client-js'
 }
 
-plugin enhancer {
-    provider = '@core/enhancer'
-    generatePermissionChecker = true
-}
+// plugin enhancer {
+//     provider = '@core/enhancer'
+//     generatePermissionChecker = true
+// }
 
 plugin hooks {
     provider = '@zenstackhq/tanstack-query'
@@ -127,6 +127,8 @@ model List {
     title     String   @length(1, 100)
     private   Boolean  @default(false)
     todos     Todo[]
+
+    ignored_array_field    String[] @ignore
 
     // require login
     @@deny('all', auth() == null)

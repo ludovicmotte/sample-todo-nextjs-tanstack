@@ -230,6 +230,10 @@ const metadata = {
                     isDataModel: true,
                     isArray: true,
                     backLink: 'list',
+                }, ignored_array_field: {
+                    name: "ignored_array_field",
+                    type: "String",
+                    isArray: true,
                 },
             }
             , uniqueConstraints: {

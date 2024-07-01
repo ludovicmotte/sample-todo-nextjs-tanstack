@@ -78,17 +78,18 @@ model User {
 /// @@allow('update', owner == auth() && space.members?[user == auth()] && future().owner == owner)
 /// @@allow('delete', owner == auth())
 model List {
-  id        String   @id() @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
-  space     Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
-  spaceId   String
-  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  ownerId   String
+  id                  String   @id() @default(uuid())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt()
+  space               Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  spaceId             String
+  owner               User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId             String
   /// @length(1, 100)
-  title     String
-  private   Boolean  @default(false)
-  todos     Todo[]
+  title               String
+  private             Boolean  @default(false)
+  todos               Todo[]
+  ignored_array_field String[] @ignore()
 }
 
 /// @@deny('all', auth() == null)
